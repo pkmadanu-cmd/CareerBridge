@@ -1,0 +1,11 @@
+// This version uploads resume PDFs through Apps Script to a private Drive folder,
+// so Firebase Storage is not used for applicant resumes in this starter.
+// If you later move resumes to Firebase Storage, use per-user paths and strict size/type rules.
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}
