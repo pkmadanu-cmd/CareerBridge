@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CareerBridge | Find your next opportunity</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"><link href="styles.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark cb-nav sticky-top"><div class="container"><a class="navbar-brand fw-bold" href="#home">CareerBridge</a><div class="navbar-account d-flex align-items-center gap-2 flex-wrap"><a class="nav-link text-white-50 d-none d-md-inline" href="#jobs">Find jobs</a><a class="nav-link text-white-50 d-none d-md-inline" href="#apply">Submit resume</a><button id="googleLoginBtn" class="btn btn-light btn-sm">Continue with Google</button><div id="profileArea" class="profile-area d-none" aria-live="polite"><div id="profileAvatar" class="profile-avatar" aria-hidden="true">U</div><div class="profile-copy"><div id="profileName" class="profile-name">Signed-in user</div><div id="profileEmail" class="profile-email"></div></div></div><button id="logoutBtn" class="btn btn-outline-light btn-sm d-none">Logout</button></div></div></nav>
+<header id="home" class="hero py-5 py-lg-6"><div class="container"><div class="row align-items-center g-5"><div class="col-lg-7"><span class="badge rounded-pill text-bg-light mb-3">Your next opportunity starts here</span><h1 class="display-4 fw-bold">Find work that fits <span class="text-warning">your future.</span></h1><p class="lead mt-3">Explore opportunities, share your skills, and submit your resume through one simple portal.</p><a class="btn btn-warning btn-lg mt-2" href="#jobs">Explore jobs</a><a class="btn btn-outline-light btn-lg mt-2 ms-2" href="#apply">Submit your resume</a></div><div class="col-lg-5"><div class="hero-panel"><div class="small text-uppercase fw-bold text-primary mb-2">CareerBridge</div><h2 class="h3 fw-bold">One profile. New possibilities.</h2><p class="text-secondary mb-0">Search opportunities and let our consultancy team review your profile for relevant openings.</p><hr><div class="d-flex gap-3 align-items-center"><div class="stat-icon">✓</div><div><strong>Applicant-first</strong><div class="small text-secondary">Your information is handled with care.</div></div></div></div></div></div></div></header>
+<main class="container py-5">
+<section id="jobs" class="mb-5"><div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-3"><div><span class="eyebrow">OPPORTUNITIES</span><h2 class="h2 fw-bold">Explore jobs</h2><p class="text-secondary mb-0">Search by title, skills, company, or location.</p></div><input id="searchJobs" class="form-control search-box" type="search" placeholder="e.g. Java, Hyderabad" aria-label="Search jobs"></div><div id="jobsStatus" class="text-secondary small mb-3">Connecting to job listings…</div><div id="jobsList" class="row g-3"></div></section>
+<section id="adminJobs" class="admin-panel mb-5 d-none" aria-labelledby="adminJobsTitle"><div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3"><div><span class="eyebrow">ADMIN ONLY</span><h2 id="adminJobsTitle" class="h3 fw-bold mb-1">Manage job opportunities</h2><p class="text-secondary mb-0">Add new vacancies or update/remove existing listings. Only the authorised admin account can use this panel.</p></div><span class="badge text-bg-success">Admin access</span></div><form id="jobAdminForm" class="row g-3"><input id="editingJobId" type="hidden"><div class="col-md-6"><label for="jobTitle" class="form-label">Job title *</label><input id="jobTitle" class="form-control" maxlength="150" required placeholder="Java Developer"></div><div class="col-md-6"><label for="jobCompany" class="form-label">Company *</label><input id="jobCompany" class="form-control" maxlength="150" required placeholder="Company name"></div><div class="col-md-6"><label for="jobLocation" class="form-label">Location *</label><input id="jobLocation" class="form-control" maxlength="150" required placeholder="USA, Hyderabad, Remote"></div><div class="col-md-6"><label for="jobType" class="form-label">Job type</label><select id="jobType" class="form-select"><option>Full-time</option><option>Part-time</option><option>Internship</option><option>Contract</option><option>Remote</option><option>Opportunity</option></select></div><div class="col-12"><label for="jobSkills" class="form-label">Required skills / qualification *</label><input id="jobSkills" class="form-control" maxlength="500" required placeholder="Java, SQL, Spring Boot"></div><div class="col-12"><label for="jobDescription" class="form-label">Job description *</label><textarea id="jobDescription" class="form-control" rows="4" maxlength="4000" required placeholder="Responsibilities, qualifications, and application instructions"></textarea></div><div class="col-12 d-flex flex-wrap gap-2"><button id="saveJobBtn" type="submit" class="btn btn-primary">Save job opportunity</button><button id="cancelJobEditBtn" type="button" class="btn btn-outline-secondary d-none">Cancel edit</button><span id="jobAdminStatus" class="small align-self-center" role="status"></span></div></form><hr class="my-4"><h3 class="h5 fw-bold">Published job opportunities</h3><p class="small text-secondary">Use Edit to load a listing into the form, or Delete to remove it from the public website.</p><div id="adminJobList" class="list-group"></div></section>
+<section id="apply" class="application-panel mb-5">
+  <div class="application-heading mb-4">
+    <span class="eyebrow">GET STARTED</span>
+    <h2 class="h2 fw-bold mb-2">Share your profile</h2>
+    <p class="text-secondary mb-0">Sign in with Google, complete your details, add an applicant photo, and upload your resume as a PDF.</p>
+  </div>
+  <div id="applicationRegistrationPanel" class="alert alert-success d-none mb-4" role="status" aria-live="polite">
+    <div class="fw-bold">Application submitted successfully</div>
+    <div class="small">Your Application Registration Number:</div>
+    <div id="applicationRegistrationNumber" class="h5 fw-bold mb-0 mt-1"></div>
+    <div class="small mt-2">Please save this number for your records.</div>
+  </div>
+  <div class="privacy-note mb-4"><strong>Privacy matters</strong><p class="small mb-0">Only submit information you are comfortable sharing with the consultancy. Resumes and applicant photos should be stored privately and accessed only by authorised staff.</p></div>
+  <div id="accountStatus" class="small mb-4 text-secondary">You are not signed in.</div>
+  <section id="myApplicationsPanel" class="my-applications-panel mb-4" aria-labelledby="myApplicationsTitle">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-2">
+      <div><h3 id="myApplicationsTitle" class="h5 fw-bold mb-1">My previous applications</h3><p class="small text-secondary mb-0">Sign in with the same Google account used when you applied to view your application history.</p></div>
+      <button id="refreshApplicationsBtn" type="button" class="btn btn-outline-primary btn-sm" disabled>Refresh history</button>
+    </div>
+    <div id="myApplicationsStatus" class="small text-secondary" role="status" aria-live="polite">Sign in with Google to check your previous applications.</div>
+    <div id="myApplicationsTableWrap" class="table-responsive d-none mt-3"><table class="table table-sm table-striped table-bordered align-middle mb-0"><thead class="table-light"><tr><th>Registration No.</th><th>Submitted</th><th>Qualification</th><th>Preferred location</th><th>Skills / target role</th><th>Status</th><th>Resume file</th></tr></thead><tbody id="myApplicationsRows"></tbody></table></div>
+  </section>
+  <form id="applicantForm" class="row g-4">
+    <div class="col-lg-8 order-2 order-lg-1">
+      <div class="row g-3">
+        <div class="col-md-6"><label class="form-label" for="fullName">Full name *</label><input id="fullName" class="form-control" required maxlength="120" autocomplete="name" placeholder="Enter your full name"></div>
+        <div class="col-md-6"><label class="form-label" for="phone">Phone number *</label><input id="phone" class="form-control" required maxlength="30" autocomplete="tel" placeholder="Enter your phone number"></div>
+        <div class="col-md-6"><label class="form-label" for="education">Education / qualification *</label><input id="education" class="form-control" required maxlength="160" placeholder="B.Tech, B.Com, MBA…"></div>
+        <div class="col-md-6"><label class="form-label" for="preferredLocation">Preferred location *</label><input id="preferredLocation" class="form-control" required maxlength="120" placeholder="Hyderabad, USA, Remote…"></div>
+        <div class="col-12"><label class="form-label" for="applicantSkills">Skills and target role *</label><input id="applicantSkills" class="form-control" required maxlength="500" placeholder="Java, SQL; Java Developer"></div>
+      </div>
+      <div class="row g-3 mt-1">
+        <div class="col-12"><hr class="my-1"><label class="form-label" for="resume">Resume (PDF only, max 5 MB) *</label><input id="resume" class="form-control" type="file" accept="application/pdf,.pdf" required><div class="form-text">Please upload a PDF you have permission to share.</div></div>
+        <div class="col-12"><div class="form-check"><input id="consent" class="form-check-input" type="checkbox" required><label class="form-check-label small" for="consent">I consent to sharing these details, my applicant photo (if provided), and my resume with CareerBridge consultancy staff for job-matching purposes.</label></div></div>
+        <div class="col-12"><button id="submitApplicantBtn" class="btn btn-primary btn-lg" type="submit">Submit profile and resume</button><div id="message" class="alert d-none mt-3 mb-0" role="status"></div></div>
+      </div>
+    </div>
+    <div class="col-lg-4 order-1 order-lg-2">
+      <div class="applicant-photo-card h-100">
+        <div class="d-flex align-items-center justify-content-between gap-2 mb-2"><label class="form-label fw-bold mb-0" for="applicantPhoto">Applicant photo</label><span class="badge rounded-pill text-bg-light">Optional</span></div>
+        <p class="small text-secondary mb-3">Upload a clear JPG or PNG photo (maximum 2 MB).</p>
+        <div class="photo-frame"><div id="photoPlaceholder" class="photo-placeholder"><span class="photo-placeholder-icon" aria-hidden="true">＋</span><span>Your photo preview</span></div><img id="photoPreview" class="photo-preview d-none" alt="Applicant photo preview"></div>
+        <input id="applicantPhoto" class="form-control mt-3" type="file" accept="image/jpeg,image/png,.jpg,.jpeg,.png" aria-describedby="photoHelp">
+        <div id="photoHelp" class="form-text">Your selected photo appears in the frame before submission.</div>
+      </div>
+    </div>
+  </form>
+</section>
+<section class="row g-3"><div class="col-md-4"><div class="feature-tile h-100"><strong>Search opportunities</strong><p class="small mb-0">Find openings by title, location, and skills.</p></div></div><div class="col-md-4"><div class="feature-tile h-100"><strong>Share one profile</strong><p class="small mb-0">Submit your qualification, preferences, and resume.</p></div></div><div class="col-md-4"><div class="feature-tile h-100"><strong>Human review</strong><p class="small mb-0">The consultancy can review submissions and contact suitable applicants.</p></div></div></section>
+</main><footer class="border-top py-4"><div class="container small text-secondary d-flex justify-content-between"><span>© <span id="year"></span> CareerBridge</span><span>Opportunities • Skills • Careers</span></div></footer>
+<script type="module" src="app.js"></script></body></html>
